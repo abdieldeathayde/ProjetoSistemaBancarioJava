@@ -3,51 +3,42 @@ package com.projeto.banco;
 import java.util.Scanner;
 
 public class Main {
-	int limite = 500;
-	int saldo = 0;
-	int LIMITESAQUES = 3;
-	
-
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		ContaBancaria contaBancaria1 = new ContaBancaria();
+		int opcao = 0;
+		
+		
+		System.out.println("Você gostaria:");
+		System.out.println("0 - Sair");
+		System.out.println("1 - Depositar");
+        System.out.println("2 - Sacar");
+        System.out.println("3 - Exibir Extrato");
+        
+        
+        opcao = sc.nextInt();
+		sc.nextLine();
 
-		while (true) {
-			Scanner sc = new Scanner(System.in);
-			ContaBancaria conta = new ContaBancaria();
-			int opcao;
-		
-		
-			System.out.println("Você gostaria:");
-            System.out.println("1 - Depositar");
-            System.out.println("2 - Sacar");
-            System.out.println("3 - Exibir Extrato");
-            System.out.println("4 - Sair");
-            
-			opcao = sc.nextInt();
+		switch(opcao) {
+		case 0:
+			System.out.println("Fim do programa!");
+			break;
+		case 1:
+			System.out.print("Digite o valor para depositar: ");
+			int deposito = sc.nextInt();
 			sc.nextLine();
-
-			
-
-			if (opcao == 1) {
-				double deposito = conta.depositar();
-				System.out.println("Valor depositado: " + deposito);
-				break;
-				
-			} else if (opcao == 2) {
-				conta.sacar();
-				break;
-				
-			} else if (opcao == 3) {
-				conta.verExtrato();
-				break;
-				
-			} else {
-				System.out.println("Sessão encerrada! Obrigado por usar meu sistema");
-				break;
-			
-			}
-			
-		}
-		
-	}
+			contaBancaria1.depositar(deposito);
+//			System.out.println("Saldo: R$ " + contaBancaria1.depositar());
+			break;
+		case 2:
+			System.out.print("Digite o valor para sacar: ");
+			int saque = sc.nextInt();
+			sc.nextLine();
+			contaBancaria1.sacar(saque);
+//			System.out.println("Saldo: R$ " + contaBancaria1.sacar(saque));
+			break;
+	} 
+		sc.close();
+	}	
 
 } // class Main
